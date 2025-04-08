@@ -1,1 +1,121 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applejack</title>
+    <!-- Set the favicon -->
+    <link rel="icon" type="image/gif" href="applejackwalking.gif">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        form {
+            margin-top: 20px;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+        .message-board {
+            display: none;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .message-board h1 {
+            text-align: center;
+        }
+        .message-board form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+        .message-board textarea {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .message-board button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message-board .messages {
+            margin-top: 20px;
+        }
+        .message-board .message {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        function checkPassword(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            var password = document.getElementById('password').value;
+            if (password === 'bluefuton') {
+                document.getElementById('login-form').classList.add('hidden');
+                document.getElementById('message-board').style.display = 'block';
+                history.pushState({}, '', 'board'); 
+            } else {
+                alert('Incorrect password.');
+            }
+        }
+
+        function postMessage(event) {
+            event.preventDefault();
+            var messageContent = document.getElementById('message-content').value;
+            if (messageContent) {
+                var messageBoard = document.getElementById('messages');
+                var newMessage = document.createElement('div');
+                newMessage.className = 'message';
+                newMessage.textContent = messageContent;
+                messageBoard.appendChild(newMessage);
+                document.getElementById('message-content').value = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('password').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    checkPassword(e);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <img src="applejackwalking.gif" alt="Applejack" id="applejack-img">
+    <form id="login-form" onsubmit="checkPassword(event)">
+        <input type="password" id="password" placeholder="">
+    </form>
+
+    <div id="message-board" class="message-board">
+        <h1>Message Board</h1>
+        <form onsubmit="postMessage(event)">
+            <textarea id="message-content" placeholder="Enter message"></textarea>
+            <button type="submit">Post Message</button>
+        </form>
+        <div id="messages" class="messages"></div>
+    </div>
+</body>
+</html>

@@ -11,7 +11,7 @@ async function checkPassword(event) {
     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
     // Compare with hashed value
-    const blog = "9e034ba94bc8fc5f7e08b0f1d257d0b5c1f30cbb1544774dd61b393aa2abaccc";
+    const blog = "def53e95f1fc7a2aa7dbc4685f282f1e3e4ea3b364b07622e58edb15d239b252";
 
     if (hashHex === blog) {
         window.location.href = '/welcome';

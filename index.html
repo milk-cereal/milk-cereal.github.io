@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applejack</title>
-    <!-- Set the favicon -->
     <link rel="icon" type="image/gif" href="applejackwalking.gif">
     <style>
         body {
@@ -14,20 +13,12 @@
             background-color: #ffffff;
             text-align: center;
         }
-
-        /* Image for the Applejack gif */
         #applejack-img {
             width: 100%;
             max-width: 350px;
             margin-top: 20px;
         }
 
-        /* Hide the password login form after successful login */
-        .hidden {
-            display: none;
-        }
-
-        /* Password input styling */
         #login-form input {
             padding: 10px;
             font-size: 16px;
@@ -35,28 +26,12 @@
             border-radius: 4px;
         }
     </style>
-
-    <script>
-        // Function to check the entered password
-        function checkPassword(event) {
-            event.preventDefault(); // Prevent the form from submitting
-            var password = document.getElementById('password').value;
-            if (password === 'blog') {
-                // Redirect to the /welcome page
-                window.location.href = '/welcome';
-            } else {
-                alert("I don't think you belong here...");
-            }
-        }
-    </script>
 </head>
 <body>
-    <!-- Applejack Image -->
     <img src="applejackwalking.gif" alt="Applejack" id="applejack-img">
-
-    <!-- Login Form -->
     <form id="login-form" onsubmit="checkPassword(event)">
         <input type="password" id="password" placeholder="Enter password">
     </form>
+    <script src="js/login.js"></script>
 </body>
 </html>

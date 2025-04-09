@@ -8,93 +8,122 @@
     <link rel="icon" type="image/gif" href="applejackwalking.gif">
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
         }
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-        form {
+
+        /* Image for the Applejack gif */
+        #applejack-img {
+            width: 100%;
+            max-width: 500px;
             margin-top: 20px;
         }
-        input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-        }
+
+        /* Hide the password login form after successful login */
         .hidden {
             display: none;
         }
-        .message-board {
-            display: none;
+
+        /* Styling for the carousel container */
+        .carousel-container {
+            position: relative;
             width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            overflow: hidden;
         }
-        .message-board h1 {
-            text-align: center;
-        }
-        .message-board form {
+
+        .image-display {
             display: flex;
-            flex-direction: column;
-            margin-top: 20px;
+            transition: transform 0.5s ease-in-out;
         }
-        .message-board textarea {
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: auto;
         }
-        .message-board button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: #007BFF;
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        /* Buttons for the carousel */
+        button {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 15px;
             cursor: pointer;
+            z-index: 10;
+            font-size: 24px;
+            transform: translateY(-50%);
         }
-        .message-board .messages {
-            margin-top: 20px;
+
+        .prev {
+            left: 0;
         }
-        .message-board .message {
+
+        .next {
+            right: 0;
+        }
+
+        /* Password input styling */
+        #login-form input {
             padding: 10px;
-            border-bottom: 1px solid #ccc;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
         }
+
     </style>
     <script>
+        // Function to check the entered password
         function checkPassword(event) {
             event.preventDefault(); // Prevent the form from submitting
             var password = document.getElementById('password').value;
             if (password === 'bluefuton') {
+                // Hide the login form and show the image carousel
                 document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('message-board').style.display = 'block';
+                document.getElementById('image-carousel').style.display = 'block';
                 history.pushState({}, '', 'board'); 
             } else {
                 alert('Incorrect password.');
             }
         }
 
-        function postMessage(event) {
-            event.preventDefault();
-            var messageContent = document.getElementById('message-content').value;
-            if (messageContent) {
-                var messageBoard = document.getElementById('messages');
-                var newMessage = document.createElement('div');
-                newMessage.className = 'message';
-                newMessage.textContent = messageContent;
-                messageBoard.appendChild(newMessage);
-                document.getElementById('message-content').value = '';
+        // JavaScript for handling the image carousel functionality
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            
+            // Ensure the index is within bounds
+            if (index >= slides.length) {
+                currentIndex = 0; // Loop to the first image
+            } else if (index < 0) {
+                currentIndex = slides.length - 1; // Loop to the last image
+            } else {
+                currentIndex = index;
             }
+
+            // Hide all slides and show the active one
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentIndex].classList.add('active');
         }
 
+        // Move to the next or previous slide
+        function moveSlide(step) {
+            showSlide(currentIndex + step);
+        }
+
+        // Initialize the first image
         document.addEventListener('DOMContentLoaded', function () {
+            showSlide(currentIndex);
             document.getElementById('password').addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
                     checkPassword(e);
@@ -104,18 +133,31 @@
     </script>
 </head>
 <body>
+    <!-- Applejack Image -->
     <img src="applejackwalking.gif" alt="Applejack" id="applejack-img">
+
+    <!-- Login Form -->
     <form id="login-form" onsubmit="checkPassword(event)">
-        <input type="password" id="password" placeholder="">
+        <input type="password" id="password" placeholder="Enter password">
     </form>
 
-    <div id="message-board" class="message-board">
-        <h1>Message Board</h1>
-        <form onsubmit="postMessage(event)">
-            <textarea id="message-content" placeholder="Enter message"></textarea>
-            <button type="submit">Post Message</button>
-        </form>
-        <div id="messages" class="messages"></div>
+    <!-- Image Carousel -->
+    <div id="image-carousel" class="hidden">
+        <!-- Previous Button -->
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+
+        <!-- Image Display -->
+        <div class="carousel-container">
+            <div class="image-display">
+                <img src="images/JustJoking.png" alt="Image 1" class="carousel-slide">
+                <img src="images/Doing_hard_drugs.png" alt="Image 2" class="carousel-slide">
+                <img src="images/fluttershymeme.png" alt="Image 3" class="carousel-slide">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 </body>
 </html>

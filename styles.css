@@ -1,0 +1,61 @@
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.carousel-container {
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Hide images that aren't active */
+.image-display {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* Show the active image */
+.carousel-slide.active {
+    display: block;
+}
+
+/* Styling the navigation buttons */
+button {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 24px;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Optional: Make buttons responsive */
+@media (max-width: 768px) {
+    button {
+        font-size: 18px;
+    }
+}

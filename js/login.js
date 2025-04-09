@@ -17,7 +17,7 @@ async function checkPassword(event) {
     if (hashHex === blog) {
         window.location.href = '/blog';
     } 
-    if (hashHex === welcome) {
+    else if (hashHex === welcome) {
         window.location.href = '/welcome';
     }
     else {

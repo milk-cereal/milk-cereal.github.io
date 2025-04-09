@@ -2,30 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
-    <link rel="icon" type="image/gif" href="applejackwalking.gif">
-
     <style>
         body {
-            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            color: #ff69b4;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #ff00ff;
-            text-align: center;
-        }
-        #applejackwalking {
-            width: 100%;
-            max-width: 350px;
-            margin-top: 100px;
         }
 
-       
+        .sparkles {
+            margin-top: 20px;
+            animation: blink 1s infinite alternate;
+        }
+
+        @keyframes blink {
+            from { opacity: 1; }
+            to { opacity: 0.3; }
+        }
+
+        .rainbow-text {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes shimmer {
+            from {
+                background-position: -500%;
+            }
+            to {
+                background-position: 500%;
+            }
+        }
+
+        marquee {
+            font-size: 24px;
+            color: cyan;
+        }
     </style>
 </head>
 <body>
-    <img src="applejackwalking.gif" alt="Applejack" id="applejackwalking">
 
-    
+    <img src="glitter.gif" class="sparkles" alt="Glitter">
+    <h1 class="rainbow-text">WELCOME TO MY PAGE</h1>
+    <marquee behavior="alternate" scrollamount="10">You're in the pony zone now 🐴🌈</marquee>
+    <img src="../Images/applejackwalking.gif" alt="Applejack dancing" style="margin-top: 30px;">
+
+    <p><a href="/" style="color: yellow;">Back to home</a></p>
+
+    <!-- Background Music -->
+    <audio autoplay loop>
+        <source src="../music/it is a mystery.mp3" type="audio/mpeg">
+        Your browser does not support background music 😢
+    </audio>
+
 </body>
 </html>

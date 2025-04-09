@@ -87,14 +87,14 @@
             event.preventDefault(); // Prevent the form from submitting
             var password = document.getElementById('password').value;
             if (password === 'bluefuton') {
-                // Hide the login form and show the image carousel
-                document.getElementById('login-form').classList.add('hidden');
-                document.getElementById('image-carousel').style.display = 'block';
-                history.pushState({}, '', 'welcome'); 
+                // Redirect to a subdomain
+                window.location.href = '/welcome';
+
             } else {
                 alert('Incorrect password.');
             }
         }
+
 
         // JavaScript for handling the image carousel functionality
         let currentIndex = 0;

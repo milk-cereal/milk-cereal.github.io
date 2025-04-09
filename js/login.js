@@ -23,13 +23,13 @@ async function checkPassword(event) {
     else {
        // document.getElementById('applejackwalking').classList.add('hidden');
       //  document.getElementById('applejackmad.gif').classList.remove('hidden');
-      alert("I don't think you belong here...");
+         alert("I don't think you belong here...");
 
-        setTimeout(() => {
+        //setTimeout(() => {
           //  document.getElementById('applejackwalking').classList.remove('hidden');
           //  document.getElementById('applejackmad.gif').classList.add('hidden');
 
-        }, 2500);
+       // }, 2500);
         
     }
 }

@@ -16,13 +16,13 @@ async function checkPassword(event) {
     if (hashHex === blog) {
         window.location.href = '/welcome';
     } else {
-        document.getElementById('applejackwalking.gif').classList.add('hidden');
-        document.getElementById('applejackmad.gif').classList.remove('hidden');
+       // document.getElementById('applejackwalking.gif').classList.add('hidden');
+      //  document.getElementById('applejackmad.gif').classList.remove('hidden');
+      alert("I don't think you belong here...");
 
         setTimeout(() => {
-            alert("I don't think you belong here...");
-            document.getElementById('applejackwalking.gif').classList.remove('hidden');
-            document.getElementById('applejackmad.gif').classList.add('hidden');
+          //  document.getElementById('applejackwalking.gif').classList.remove('hidden');
+          //  document.getElementById('applejackmad.gif').classList.add('hidden');
 
         }, 2500);
         

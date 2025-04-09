@@ -12,10 +12,15 @@ async function checkPassword(event) {
 
     // Compare with hashed value
     const blog = "def53e95f1fc7a2aa7dbc4685f282f1e3e4ea3b364b07622e58edb15d239b252";
+    const welcome = "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8";
 
     if (hashHex === blog) {
+        window.location.href = '/blog';
+    } 
+    if (hashHex === welcome) {
         window.location.href = '/welcome';
-    } else {
+    }
+    else {
        // document.getElementById('applejackwalking').classList.add('hidden');
       //  document.getElementById('applejackmad.gif').classList.remove('hidden');
       alert("I don't think you belong here...");

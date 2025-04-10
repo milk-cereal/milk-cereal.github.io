@@ -15,8 +15,20 @@
 
         .content-window {
         max-width: 800px;
-        margin: 60px 40px;
+        margin: 0px 40px;
         padding: 30px;
+        
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(3px);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .content-window2 {
+        max-width: 800px;
+        margin: 10px 40px;
+        padding: 30px;
+        
         background-color: rgba(255, 255, 255, 0.3);
         backdrop-filter: blur(3px);
         -webkit-backdrop-filter: blur(3px);
@@ -40,35 +52,108 @@
             color: #0cb1ed;
             text-shadow: 2px 2px 4px #2abef3;
         }
-     
+        .content-container {
+            display: flex;
+            justify-content: center;
+         /* space between the two windows */
+            flex-wrap: wrap; /* wrap on small screens */
+           
+            }
+            .main-wrapper {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 20px;
+                margin: 60px 40px;
+                flex-wrap: nowrap; /* 🔥 the important part to force side-by-side layout */
+                }
 
-      
 
-       
+            .side-window {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            height: fit-content;
+            }
 
-       
+            .side-window button {
+            font-family: 'Futura', sans-serif;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 12px;
+            background-color: #0cb1ed;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            }
+
+            .side-window button:hover {
+            background-color: #0891c2;
+            }
+
+            .content-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+            }
 
        
     </style>
 </head>
 
 <body>
-    <div class="background">    </div>
 
-        <div class="content-window">
-            <h1 class="title">Welcome</h1>
-            <marquee behavior="alternate" scrollamount="10">WELCOME</marquee>
-            <img src="../Images/dance-aj.gif" alt="Applejack dancing" style="margin-top: 30px;">
-        
-            <p><a href="/" style="color: #0a98cb;">BACK</a></p>
-        
-        
+    <div class="background">  
+        <div class="main-wrapper">
+            <!-- Left Side Glass Button Panel -->
+            <div class="side-window">
+              <br>
+              <button>Home</button>
+              <br>
+              <button>About</button>
+              <br>
+              <button onclick="location.href='/blog'">Gallery</button>
+              <br>
+              <button>Music</button>
+              <br>
+              
+              <button onclick="location.href='/'"> Exit </button> 
+              <br>
+
+            </div>
+          
+            <!-- Right Side Stacked Content -->
+            <div class="content-column">
+              <div class="content-window">
+                <h1 class="title">Welcome</h1>
+                <img src="../Images/dance-aj.gif" alt="Applejack dancing" style="margin-top: 30px;">
+                <p><a href="/" style="color: #0a98cb;">BACK</a></p>
+              </div>
+          
+             <!-- <div class="content-window2">
+                <h1 class="title">More Info</h1>
+                <p></p>
+                <p><a href="/" style="color: #0a98cb;">BACK</a></p>
+              </div>
+            </div> -->
+          </div>
+          
+          </div>
+          
+   
+
             <!-- Background Music 
             <audio autoplay loop>
                 <source src="../music/carameldansen.mp3" type="audio/mpeg">
             </audio>-->
-     </div>
-   
-
 </body>
 </html>

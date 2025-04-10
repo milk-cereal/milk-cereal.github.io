@@ -55,3 +55,99 @@ button {
         font-size: 18px;
     }
 }
+.content-window {
+    max-width: 800px;
+    margin: 0px 40px;
+    padding: 30px;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .content-window2 {
+    max-width: 800px;
+    margin: 10px 40px;
+    padding: 30px;
+    
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    body, html {
+       
+        background: radial-gradient(circle farthest-corner at top left, #8fddf9, #89ffb0);
+        font-family: 'Futura', sans-serif;
+        text-align: center;
+        background-size: cover;
+        color: #8fddf9;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+    
+    .title {
+        font-size: 50px;
+        color: #0cb1ed;
+        text-shadow: 2px 2px 4px #2abef3;
+    }
+    .content-container {
+        display: flex;
+        justify-content: center;
+     /* space between the two windows */
+        flex-wrap: wrap; /* wrap on small screens */
+       
+        }
+        .main-wrapper {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 60px 40px;
+            flex-wrap: nowrap; 
+            }
+
+
+        .side-window {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px;
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        height: fit-content;
+        }
+
+        .side-window button {
+        font-family: 'Futura', sans-serif;
+        font-size: 16px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 12px;
+        background-color: #0cb1ed;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        }
+
+        .side-window button:hover {
+        background-color: #0891c2;
+        }
+
+        .content-column {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 800px;
+        width: 100%;
+        }

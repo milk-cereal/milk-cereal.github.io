@@ -8,15 +8,18 @@
 
     <style>
         body {
+            background-image: url('Images/background.jpg');
+
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff2ff;
+            background-color: #F4BFDB;
             text-align: center;
         }
         #applejackwalking {
             width: 100%;
-            max-width: 350px;
+            max-width: 250px;
             margin-top: 100px;
         }
 
@@ -29,11 +32,19 @@
     </style>
 </head>
 <body>
+    <br>
+    <br>
+    <br>
+
+    <br>
+
+    <br>
+
     <img src="Images/applejackwalking.gif" alt="Applejack" id="applejackwalking">
    <!-- <img src="applejackmad.gif" alt="Angry Applejack" id="applejackmad.gif" class="hidden">--> 
 
     <form id="login-form" onsubmit="checkPassword(event)">
-        <input type="password" id="password" placeholder="Enter password">
+        <input type="password" id="password" placeholder="Enter password" maxlength="12" >
     </form>
     <script src="js/login.js"></script>
    

@@ -39,10 +39,10 @@
         button {
             position: absolute;
             top: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 0px;
             cursor: pointer;
             z-index: 10;
             font-size: 24px;
@@ -86,7 +86,15 @@
 </head>
 <body>
     <div id="image-carousel">
-        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="prev" onclick="moveSlide(-1)">
+            <img src="../Images/frutigerarrowright.png" alt="Previous" style="height: 40px;">
+        </button>
+        <button class="next" onclick="moveSlide(1)">
+            <img src="../Images/frutigerarrowright.png" alt="Next" style="height: 40px;">
+        </button>
+
+       
+        
         <div class="carousel-container">
             <div class="image-display">
                 <img src="../Images/JustJoking.png" alt="Image 1" class="carousel-slide">
@@ -94,9 +102,6 @@
                 <img src="../Images/fluttershymeme.png" alt="Image 3" class="carousel-slide">
             </div>
         </div>
-        <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        <p><a href="/" style="color: rgb(255, 255, 255);">Back</a></p>
-
     </div>
 </body>
 </html>

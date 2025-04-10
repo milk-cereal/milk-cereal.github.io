@@ -8,13 +8,9 @@
    
 
         .background {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-image: url('your-background-image.jpg');
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
+           
+          
+            background-position: center;
         }
 
         .content-window {
@@ -29,15 +25,15 @@
         }
         body, html {
             background-image: url('../Images/background.jpg');
-
-            background-size: cover;
-            color: #8fddf9;
             font-family: 'Futura', sans-serif;
             text-align: center;
+            background-size: cover;
+            color: #8fddf9;
             height: 100%;
-
             margin: 0;
             padding: 0;
+            width: 100%;
+
         }
         .title {
             font-size: 50px;
@@ -57,7 +53,8 @@
 </head>
 
 <body>
-    <div class="background"></div>
+    <div class="background">    </div>
+
         <div class="content-window">
             <h1 class="title">Welcome</h1>
             <marquee behavior="alternate" scrollamount="10">WELCOME</marquee>

@@ -150,5 +150,35 @@
             <audio autoplay loop>
                 <source src="../music/carameldansen.mp3" type="audio/mpeg">
             </audio>-->
+            <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+<script>
+  const socket = io('http://localhost:3000');
+
+  socket.on('connect', () => {
+    console.log('🔌 Connected to chat server as', socket.id);
+  });
+
+  // Example: sending a message
+  function sendMessage() {
+    const input = document.getElementById('chatInput');
+    const msg = input.value;
+    socket.emit('chatMessage', msg);
+    input.value = '';
+  }
+  <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 12px;">
+  <div id="chatBox" style="height: 200px; overflow-y: auto; border: 1px solid #ccc; margin-bottom: 10px;"></div>
+  <input type="text" id="chatInput" placeholder="Type a message..." />
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+  // Example: receiving messages
+  socket.on('chatMessage', (msg) => {
+    const chatBox = document.getElementById('chatBox');
+    const p = document.createElement('p');
+    p.textContent = msg;
+    chatBox.appendChild(p);
+  });
+</script>
+
 </body>
 </html>

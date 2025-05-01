@@ -50,14 +50,14 @@ io.on('connection', (socket) => {
   });
 
   // Chat message with display name
-  socket.on('chatMessage', (msg) => {
+  socket.on('chat message', (msg) => {
     const name = socket.displayName || 'Anonymous';
     const messageData = {
       name,
       message: msg
     };
     console.log(` ${name}: ${msg}`);
-    io.emit('chatMessage', messageData);
+    io.emit('chat message', messageData);
   });
 
   socket.on('disconnect', () => {

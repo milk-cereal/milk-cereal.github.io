@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
   // Listen for display name from client
   socket.on('new user', (displayName) => {
     socket.displayName = displayName;
-    console.log(`👤 ${displayName} joined the chat`);
+    console.log(` ${displayName} joined the chat`);
     socket.broadcast.emit('user joined', `${displayName} has joined the chat`);
   });
 

@@ -182,20 +182,20 @@
     };
 
     socket.on('connect', () => {
-      console.log('🔌 Connected to chat server as', socket.id);
+      console.log(' Connected to chat server as', socket.id);
     });
 
     function sendMessage() {
       const input = document.getElementById('chatInput');
       const msg = input.value.trim();
       if (msg) {
-        socket.emit('chatMessage', msg); // just the message; server knows your name
+        socket.emit('chat message', msg); // just the message; server knows your name
         input.value = '';
       }
     }
 
     // Receive message object: { name: "Display Name", message: "Hello" }
-    socket.on('chatMessage', (data) => {
+    socket.on('chat message', (data) => {
       const chatBox = document.getElementById('chatBox');
       const p = document.createElement('p');
       p.textContent = `${data.name}: ${data.message}`;

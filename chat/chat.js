@@ -31,6 +31,9 @@ function sendMessage() {
 }
 
 socket.on('chat message', data => {
+    console.log("Received:", data);
+  });
+socket.on('chat message', data => {
   const chatBox = document.getElementById('chatBox');
   const p = document.createElement('p');
   p.textContent = `${data.name}: ${data.message}`;

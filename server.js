@@ -9,7 +9,7 @@ const { Server } = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 
-// Setup Socket.IO for real-time chat
+// Socket.IO for real-time chat
 const io = new Server(server, {
   cors: {
     origin: '*',
@@ -26,11 +26,11 @@ mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('✅ Connected to MongoDB Atlas'))
-.catch((err) => console.error('❌ MongoDB connection error:', err));
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
-const authRoutes = require('./routes/auth'); // ✅ move this down here
+const authRoutes = require('./routes/auth'); 
 app.use('/api/auth', authRoutes);
 
 // Basic route
@@ -42,18 +42,32 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log(`🔌 New socket connected: ${socket.id}`);
 
+  // Listen for display name from client
+  socket.on('new user', (displayName) => {
+    socket.displayName = displayName;
+    console.log(`👤 ${displayName} joined the chat`);
+    socket.broadcast.emit('user joined', `${displayName} has joined the chat`);
+  });
+
+  // Chat message with display name
   socket.on('chatMessage', (msg) => {
-    console.log(`💬 Message received: ${msg}`);
-    io.emit('chatMessage', msg); // broadcast to all clients
+    const name = socket.displayName || 'Anonymous';
+    const messageData = {
+      name,
+      message: msg
+    };
+    console.log(` ${name}: ${msg}`);
+    io.emit('chatMessage', messageData);
   });
 
   socket.on('disconnect', () => {
-    console.log(`❌ Socket disconnected: ${socket.id}`);
+    console.log(`Socket disconnected: ${socket.id}`);
   });
 });
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server listening on port ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
